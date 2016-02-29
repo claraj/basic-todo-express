@@ -2,7 +2,6 @@ extends layout
 
 block content
 
-
     div.addtask
         form#addtask_form(action='tasks/addtask', method="post")
             input#addtask_input(type="text", name="task_name", placeholder="add new task" required)
@@ -32,3 +31,5 @@ block content
         form#all_done_form(action='tasks/alldone' method='post')
             input(type='hidden', value='true', name='all_done')
             input.button#all_done_button(type='submit', value='All done!')
+
+
