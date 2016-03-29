@@ -69,7 +69,11 @@ router.post('/alldone', function(req, res, next){
 //This gets called for any routes with url parameters e.g. DELETE and POST tasks/taskID
 //This is REALLY HELPFUL because it provides a task object (_id, name, completed) as
 //attribute of req object.
-//Order matters - this is located here so it doesn't operate on the methods above.
+//  ****** Order of methods matters! - this is located here so it doesn't operate on the methods above. 
+// Express checks each route in order to find a match, once one router operates on a request and returns a response, 
+// then the request is done and none of the other methods will be called. 
+// You want this to router.param() call to happen before delete a task; and mark a task completed, both of these methods require the parameter
+// All other methods (add task, get all tasks, mark all completed, get all completed) should be above this.
 
 router.param('task_id', function(req, res, next, taskId){
   console.log("params being extracted from URL for " + taskId );
